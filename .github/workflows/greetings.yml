@@ -1,0 +1,27 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: |
+          👋 Welcome to Daily Sudoku!
+          Thanks for reporting an issue. Please provide:
+          - Steps to reproduce
+          - Expected behavior
+          - Screenshots (if applicable)
+
+        pr-message: |
+          🎉 Thanks for contributing to Daily Sudoku!
+          Please make sure:
+          - Code is tested
+          - No linting errors
+          - Documentation is updated if needed
